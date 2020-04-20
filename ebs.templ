@@ -1,0 +1,13 @@
+resource "aws_ebs_volume" "apps" {
+    availability_zone = "{{.Env.EBSZONE}}"
+    size = 24 
+
+    tags = { 
+       Name = "{{.Env.host_name}}" 
+       Creator = "{{.Env.CREATOR}}"
+       }
+}
+
+output "apps_volume_output" {
+  value = "${aws_ebs_volume.apps.id}"
+}

@@ -1,0 +1,14 @@
+#!/bin/bash
+#   userdata for tomcat server
+#   Usage $0 VOLID it is passed from the userdata
+
+RUNDIR=`dirname $0`
+. $RUNDIR/global.env
+
+cat /tmp/build.txt | while read task
+do
+    $RUNDIR/$task
+done
+$RUNDIR/tagRootVol
+echo "runcmd completed."
+# task can be run.eip, run.crusers, run.ebs, run.efs
